@@ -1,5 +1,5 @@
-const Welcome = ({ fullname, setIsLoggedIn }) => {
-  return <div>Welcome {fullname}
+const Welcome = ({ name, setIsLoggedIn }) => {
+  return <div>Welcome {name}
   <button onClick={()=>setIsLoggedIn(false)}>Back to login page</button>
   </div>;
 };

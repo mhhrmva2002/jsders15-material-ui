@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TextField, Button, FormControlLabel, Checkbox } from "@mui/material";
 // eslint-disable-next-line react/prop-types
-const Login = ({ users, setIsLoggedIn, user, setUser }) => {
+const Login = ({ users, setIsLoggedIn, user, setUser,setRegister }) => {
   let [wrongUser, setWrongUser] = useState(false);
 
   function handleChange(e) {
@@ -12,12 +12,12 @@ const Login = ({ users, setIsLoggedIn, user, setUser }) => {
     // eslint-disable-next-line react/prop-types
     let userFound = users.find(
       (item) =>
-        item.username === user.username && item.password === user.password
+        item.email === user.email && item.password === user.password
     );
 
     if (userFound === undefined) userFound = false;
     else {
-      user.fullName = userFound.fullName;
+      user.name = userFound.name;
       userFound = true;
     }
     setIsLoggedIn(userFound);
@@ -29,17 +29,17 @@ const Login = ({ users, setIsLoggedIn, user, setUser }) => {
   }
   return (
     <>
-      <h1>Login</h1>
+      <h1>Sign in</h1>
       <form style={{ width: "100%" }} onSubmit={(e) => handleSubmit(e)}>
         <TextField
           style={{ width: "30%" }}
           id="email"
           label="Email"
           variant="outlined"
-          name="username"
+          name="email"
           onChange={(e) => handleChange(e)}
-          type="text"
-          placeholder="username"
+          type="email"
+          placeholder="email"
         />
         <br />
         <TextField
@@ -64,11 +64,10 @@ const Login = ({ users, setIsLoggedIn, user, setUser }) => {
         </Button>
       </form>
       <p style={{ color: "red" }}>
-        {wrongUser ? "wrong username or password" : ""}
+        {wrongUser ? "wrong email or password" : ""}
       </p>
-      <div>
-        <button style={{border:"none",justifyContent:"SpaceBetween"}}><a href="#">Forgot password?</a></button>
-        <button style={{border:"none"}}><a href="#">Don't have an account? Sign Up</a></button>
+      <div style={{fontSize:"0.7em"}}><span style={{color:'#2196f3', cursor:"pointer", textDecoration:"underline"}}>Forgot password?</span>
+      <span  style={{marginLeft:"100px",color:'#2196f3', cursor:"pointer", textDecoration:"underline"}} onClick={()=>setRegister(true)}>Don't have an account? Sign Up</span>
       </div>
       <p style={{color:"gray"}}>Copyright © Your Website 2023</p>
     </>
