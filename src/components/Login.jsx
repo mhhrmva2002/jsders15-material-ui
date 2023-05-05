@@ -66,6 +66,7 @@ const Login = ({ users, setIsLoggedIn, user, setUser,setRegister }) => {
       <p style={{ color: "red" }}>
         {wrongUser ? "wrong email or password" : ""}
       </p>
+      {/* warning olmasin deye a taqlarini span ile evez etdim  */}
       <div style={{fontSize:"0.7em"}}><span style={{color:'#2196f3', cursor:"pointer", textDecoration:"underline"}}>Forgot password?</span>
       <span  style={{marginLeft:"100px",color:'#2196f3', cursor:"pointer", textDecoration:"underline"}} onClick={()=>setRegister(true)}>Don't have an account? Sign Up</span>
       </div>
